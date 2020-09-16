@@ -23,7 +23,7 @@ const SliderCarousel = () => {
 
     return (
         <div className="bg">
-            <div className="row">
+            <div className="row carousel-info">
                 <div className="col-md-8 details">
                 <h1>{data.name}</h1>
                 <h3>{data.details}</h3>
