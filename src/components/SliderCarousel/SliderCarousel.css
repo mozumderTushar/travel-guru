@@ -2,8 +2,9 @@
     background-image: url("https://i.ibb.co/nmdRCnF/Rectangle-1.png");
     background-repeat: no-repeat;
     background-size:cover;
+    min-height: 600px;
 }
-.carousel-details{
+.details{
     color: #fff;
     /* margin: 20px; */
     padding: 120px;

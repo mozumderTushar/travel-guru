@@ -9,6 +9,7 @@ import {
 import Header from './components/Header/Header';
 import NotFound from './components/NotFound/NotFound';
 import SliderCarousel from './components/SliderCarousel/SliderCarousel';
+import TravelDetails from './components/TravelDetails/TravelDetails';
 
 
 function App() {
@@ -19,6 +20,10 @@ function App() {
            <Route exact path="/">
              <Header/>
              <SliderCarousel/>
+           </Route>
+           <Route path="/details/:destinationId">
+           <Header/>
+             <TravelDetails/>
            </Route>
            <Route path="*">
              <NotFound/>

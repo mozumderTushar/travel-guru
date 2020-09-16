@@ -3,6 +3,7 @@ import { Carousel } from 'react-bootstrap';
 import './SliderCarousel.css';
 import fakeData from '../../fakeData/travelsDetails'
 import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const SliderCarousel = () => {
 
@@ -23,10 +24,10 @@ const SliderCarousel = () => {
     return (
         <div className="bg">
             <div className="row">
-                <div className="col-md-8 carousel-details">
+                <div className="col-md-8 details">
                 <h1>{data.name}</h1>
                 <h3>{data.details}</h3>
-                <Button className="button" height="40px" variant="contained">{data.button}</Button>
+                <Link to={`details/${data.id}`}><Button className="button" height="40px" variant="contained">{data.button}</Button></Link>
                 </div>
                 <div className="col-md-4">
                     <Carousel activeIndex={index} onSelect={handleSelect}>
