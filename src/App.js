@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -10,27 +10,38 @@ import Header from './components/Header/Header';
 import NotFound from './components/NotFound/NotFound';
 import SliderCarousel from './components/SliderCarousel/SliderCarousel';
 import TravelDetails from './components/TravelDetails/TravelDetails';
+import Login from './components/Login/Login';
+import Search from './components/Search/Search';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({})
   return (
-    <div >
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <p>email: {loggedInUser.email}</p>
+       <Header/>
        <Router>
          <Switch>
            <Route exact path="/">
-             <Header/>
              <SliderCarousel/>
            </Route>
            <Route path="/details/:destinationId">
-           <Header/>
              <TravelDetails/>
+           </Route>
+           <PrivateRoute path="/search">
+             <Search/>
+           </PrivateRoute>
+           <Route path="/login">
+             <Login/>
            </Route>
            <Route path="*">
              <NotFound/>
            </Route>
          </Switch>
        </Router>
-    </div>
+    </UserContext.Provider>
   );
 }
 
