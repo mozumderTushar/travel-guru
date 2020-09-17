@@ -37,6 +37,8 @@ const Login = () => {
                 photo: photoURL
             }
             setUser(signedInUser)
+            setLoggedInUser(signedInUser)
+            history.replace(from);
             console.log(displayName, email, photoURL)
         })
         .catch(err =>{
@@ -63,8 +65,30 @@ const Login = () => {
         })
     }
 
+    const fbProvider = new firebase.auth.FacebookAuthProvider();
     const handleFbSignIn = () => {
         //fb sing in
+        firebase.auth().signInWithPopup(fbProvider).then(function(result) {
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            setLoggedInUser(user)
+            history.replace(from);
+            console.log(user)
+            // ...
+          }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            console.log(errorCode,errorMessage,email)
+            // ...
+          });
+          
     }
 
     const handleBlur = (e) => {
