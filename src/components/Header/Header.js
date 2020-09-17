@@ -145,10 +145,9 @@ const Header = () => {
         <p>Destination</p>
       </MenuItem>
       <MenuItem>
-      {
-        !loggedInUser.displayName ? <Button className="button" height="40px" variant="contained">Login</Button> :
-      <p>{loggedInUser.displayName }</p>
-      }
+      
+         <Button className="button" height="40px" variant="contained">Login</Button> 
+      
       
       </MenuItem>
     </Menu>
