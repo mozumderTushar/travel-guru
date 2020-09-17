@@ -39,7 +39,6 @@ const Login = () => {
             setUser(signedInUser)
             setLoggedInUser(signedInUser)
             history.replace(from);
-            console.log(displayName, email, photoURL)
         })
         .catch(err =>{
             console.log(err);
@@ -136,7 +135,6 @@ const Login = () => {
                 setUser(newUserInfo)
                 setLoggedInUser(newUserInfo)
                 history.replace(from);
-                console.log('sign in user', res.user);
             })
             .catch(error => {
                 // Handle Errors here.

@@ -157,7 +157,7 @@ const Header = () => {
         <div className={classes.grow}>
         <AppBar position="static">
           <Toolbar>
-            <img height="60px" src="https://i.ibb.co/LvS9C6r/Logo.png" alt="" srcset=""/>
+            <img height="60px" src="https://i.ibb.co/LvS9C6r/Logo.png" alt="" />
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -185,9 +185,9 @@ const Header = () => {
               <IconButton  color="inherit">
                 Contact
               </IconButton>
-              <IconButton  color="inherit">
+              
                 <Button className="button" height="40px" variant="contained">Login</Button>
-              </IconButton>
+              
             </div>
             <div className={classes.sectionMobile}>
               <IconButton

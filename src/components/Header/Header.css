@@ -1,3 +1,5 @@
 .button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.button{
     background-color: #F9A51A;
+    height: max-content;
+    margin: auto;
 }
