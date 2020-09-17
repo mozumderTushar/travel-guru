@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,6 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Button } from '@material-ui/core';
 import './Header.css'
+import { UserContext } from '../../App';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -78,6 +79,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
 
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -142,7 +145,11 @@ const Header = () => {
         <p>Destination</p>
       </MenuItem>
       <MenuItem>
-      <Button className="button" height="40px" variant="contained">Login</Button>
+      {
+        !loggedInUser.displayName ? <Button className="button" height="40px" variant="contained">Login</Button> :
+      <p>{loggedInUser.displayName }</p>
+      }
+      
       </MenuItem>
     </Menu>
   );

@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 import './TravelDetails.css'
+import Search from '../Search/Search';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +25,7 @@ const TravelDetails = () => {
   const { destinationId } = useParams()
 
   const [destination, setDestination] = useState({})
+  const [travelData, setTravelData] = useState([])
   console.log(fakeData);
 
   useEffect(() => {
@@ -32,12 +34,12 @@ const TravelDetails = () => {
     setDestination(data)
     console.log(data);
   }, [])
-  console.log(destination);
+  console.log(destination,'destination');
 
   //booking to search
   const history = useHistory()
   const handleBooking = () => {
-    history.push('/search')
+    history.push(`/search/${destinationId}`)
   }
 
   return (
@@ -51,19 +53,16 @@ const TravelDetails = () => {
           <Card style={{ width: '30rem', marginTop: '100px' }} >
             <Card.Body>
               <Form>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group controlId="formBasicEmail" >
                   <Form.Label>Origin</Form.Label>
-                  <Form.Control type="text" placeholder="" />
+                  <Form.Control type="text" placeholder="" required />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Destination</Form.Label>
                   <Form.Control type="text" placeholder="Password" value={destination.name} />
                 </Form.Group>
-
-
-              </Form>
-              <div className="row">
+                <div className="row">
                 <div className="col-md-6">
                   <Form.Label>From</Form.Label>
                   <form className={classes.container} noValidate>
@@ -94,6 +93,9 @@ const TravelDetails = () => {
                 </div>
               </div>
               <Button className="button mt-3 bookingBtn" onClick={handleBooking} height="40px" variant="contained">Start Booking</Button>
+              </Form>
+             
+            
             </Card.Body>
           </Card>
         </div>
