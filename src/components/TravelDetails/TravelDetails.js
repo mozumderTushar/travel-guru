@@ -26,19 +26,17 @@ const TravelDetails = () => {
 
   const [destination, setDestination] = useState({})
   const [travelData, setTravelData] = useState([])
-  console.log(fakeData);
 
   useEffect(() => {
-
     const data = fakeData.find(data => data.id === Number(destinationId))
     setDestination(data)
-    console.log(data);
   }, [])
-  console.log(destination,'destination');
+ 
 
   //booking to search
   const history = useHistory()
-  const handleBooking = () => {
+  const handleBooking = (e) => {
+    e.preventDefault();
     history.push(`/search/${destinationId}`)
   }
 
@@ -52,22 +50,39 @@ const TravelDetails = () => {
         <div className="col-md-5">
           <Card style={{ width: '30rem', marginTop: '100px' }} >
             <Card.Body>
-              <Form>
-                <Form.Group controlId="formBasicEmail" >
+              {/* <Form>
+                <Form.Group controlId="formBasicText" >
                   <Form.Label>Origin</Form.Label>
                   <Form.Control type="text" placeholder="" required />
                 </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group controlId="formBasicEmail">
                   <Form.Label>Destination</Form.Label>
-                  <Form.Control type="text" placeholder="Password" value={destination.name} />
+                  <Form.Control type="text"  value={destination.name} />
                 </Form.Group>
-                <div className="row">
+                </Form> */}
+                
+                <Form onSubmit={handleBooking}>
+
+    
+
+
+  <Form.Group controlId="formBasicEmail">
+  <Form.Label>Origin</Form.Label>
+    <Form.Control  type="text" name="email" placeholder="Enter Your Origin" required/>
+  </Form.Group>
+
+  <Form.Group controlId="formBasicPassword">
+  <Form.Label>Destination</Form.Label>
+    <Form.Control   type="text" name="name"  placeholder="Enter Your Destination" required/>
+  </Form.Group>
+
+  <div className="row">
                 <div className="col-md-6">
                   <Form.Label>From</Form.Label>
-                  <form className={classes.container} noValidate>
+                  
                     <TextField
-                      id="date"
+                      id="Startdate"
                       type="date"
                       defaultValue="2017-05-24"
                       className={classes.textField}
@@ -75,13 +90,13 @@ const TravelDetails = () => {
                         shrink: true,
                       }}
                     />
-                  </form>
+                  
                 </div>
                 <div className="col-md-6">
                   <Form.Label>To</Form.Label>
-                  <form className={classes.container} noValidate>
+                  
                     <TextField
-                      id="date"
+                      id="Enddate"
                       type="date"
                       defaultValue="2017-05-24"
                       className={classes.textField}
@@ -89,13 +104,18 @@ const TravelDetails = () => {
                         shrink: true,
                       }}
                     />
-                  </form>
+                  
                 </div>
               </div>
-              <Button className="button mt-3 bookingBtn" onClick={handleBooking} height="40px" variant="contained">Start Booking</Button>
-              </Form>
+
+  {/* <input className="BtnDesign" type="submit"  /> */}
+  <button className="BtnDesign mt-3">Start Booking</button>
+</Form>
+  
+
+               
+              {/* <Button className="button mt-3 bookingBtn" onClick={handleBooking} height="40px" variant="contained">Start Booking</Button> */}
              
-            
             </Card.Body>
           </Card>
         </div>
