@@ -1,0 +1,53 @@
+.BtnDesign{
+    width:-webkit-fill-available;
+    background-color: #F9A51A;
+    border:none;
+    height: 40px;
+}
+
+.forgetPassword{
+    margin-left: 100px;
+    color:#F9A51A
+}
+
+.commonColor{
+    color:#F9A51A
+}
+
+.google-button {
+    background-image: url(https://i.ibb.co/jWsmmMJ/google.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-size: contain;
+    /* border: none; */
+    cursor: pointer;
+    height: 38px;
+    padding-left: 40px;
+    vertical-align: middle;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 341px;
+    border:1px solid gray
+}
+
+.facebook-button{
+    background-image: url(https://i.ibb.co/dWzrBJk/fb.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-size: contain;
+    /* border: none; */
+    cursor: pointer;
+    height: 38px;
+    padding-left: 40px;
+    vertical-align: middle;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 341px;
+    border:1px solid gray
+}

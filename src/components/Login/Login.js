@@ -5,6 +5,7 @@ import firebaseConfig from '../../firebase.config';
 import { Card, Form } from 'react-bootstrap';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
+import './Login.css'
 
 firebase.initializeApp(firebaseConfig);
 const Login = () => {
@@ -60,6 +61,10 @@ const Login = () => {
         .catch(err => {
             
         })
+    }
+
+    const handleFbSignIn = () => {
+        //fb sing in
     }
 
     const handleBlur = (e) => {
@@ -133,11 +138,50 @@ const Login = () => {
         });
       }
     return (
-        <div style={{textAlign:'center'}}>
+        <div>
             
-            {
+        
+<Card style={{ width: '25rem', margin:'0 auto',marginTop:'100px' }}>
+  <Card.Body>
+      {newUser ? <h3>Create an account</h3> : <h3>Login</h3>}
+  <Form onSubmit={handleSubmit}>
+  {newUser && <Form.Group controlId="formBasicText">
+    <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="First Name" />
+  </Form.Group>}
+  {newUser && <Form.Group controlId="formBasicText">
+    <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="Last Name" />
+  </Form.Group>}
+
+
+  <Form.Group controlId="formBasicEmail">
+    <Form.Control onBlur={handleBlur} type="text" name="email" placeholder="Enter email" required/>
+  </Form.Group>
+
+  <Form.Group controlId="formBasicPassword">
+    <Form.Control  onBlur={handleBlur} type="password" name="password" placeholder="Password" required/>
+  </Form.Group>
+
+  {newUser && <Form.Group controlId="formBasicText">
+    <Form.Control onBlur={handleBlur} type="password" name="name" placeholder="Confirm Password" />
+  </Form.Group>}
+  {!newUser && <Form.Group controlId="formBasicCheckbox" className="d-flex ">
+    <Form.Check type="checkbox" label="Remember Me" /> <p className="forgetPassword">Forget Password</p>
+    
+  </Form.Group>}
+  <input className="BtnDesign" type="submit"  value={newUser ? 'Create an account' : 'Login'}/>
+  {newUser ? <p>Already have an account?<span className="commonColor"  onClick={() => setNewUser(!newUser)}>Login</span></p> :
+  <p>Don't have account?<span className="commonColor" onClick={() => setNewUser(!newUser)}>Create a account</span></p>}
+</Form>
+  </Card.Body>
+</Card>
+
+{/* fb */}
+<button  className="facebook-button" onClick={handleFbSignIn}>Continue with Facebook</button>
+
+{/* google */}
+{
                 user.isSignedIn ? <button onClick={handleGoogleSignOut}>Sign out</button> :
-                <button onClick={handleGoogleSignIn}>Sign in</button>
+                <button  className="google-button" onClick={handleGoogleSignIn}>Continue with Google</button>
             }
             {
                 user.isSignedIn && <div>
@@ -148,31 +192,8 @@ const Login = () => {
             }
 
 
-<h1>Authentication</h1>
-<Card style={{ width: '18rem', margin:'0 auto' }}>
-  <Card.Body>
-  <Form onSubmit={handleSubmit}>
-  {newUser && <Form.Group controlId="formBasicText">
-    <Form.Label>Name address</Form.Label>
-    <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="Enter name" />
-  </Form.Group>}
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control onBlur={handleBlur} type="text" name="email" placeholder="Enter email" required/>
-  </Form.Group>
 
-  <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control  onBlur={handleBlur} type="password" name="password" placeholder="Password" required/>
-  </Form.Group>
-  <Form.Group controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Remember Me" />
-  </Form.Group>
-  <input type="submit"  value={newUser ? 'Sign Up' : 'Sign In'}/>
-  <p>don't have account?<span style={{color:'green'}} onClick={() => setNewUser(!newUser)}>Create a account</span></p>
-</Form>
-  </Card.Body>
-</Card>
+
         <p style={{color:'red'}}>{user.error}</p>
         {user.success &&   <p style={{color:'green'}}>user {newUser ? 'created' : 'Logged In'} successfully</p>}
         </div>
