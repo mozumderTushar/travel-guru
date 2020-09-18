@@ -94,6 +94,7 @@ const Login = () => {
       const isPasswordValid = e.target.value.length >= 6;
       //12345678@aA
       const passwordHasNumber = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/.test(e.target.value)
+      const validPass = isPasswordValid && passwordHasNumber;
       isFieldValid = isPasswordValid && passwordHasNumber
     }
     
@@ -164,10 +165,10 @@ const Login = () => {
           {newUser ? <h3>Create an account</h3> : <h3>Login</h3>}
           <Form onSubmit={handleSubmit}>
             {newUser && <Form.Group controlId="formBasicText">
-              <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="First Name" />
+              <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="First Name" required/>
             </Form.Group>}
             {newUser && <Form.Group controlId="formBasicText">
-              <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="Last Name" />
+              <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="Last Name" required/>
             </Form.Group>}
 
 
@@ -180,7 +181,7 @@ const Login = () => {
             </Form.Group>
 
             {newUser && <Form.Group controlId="formBasicText">
-              <Form.Control onBlur={handleBlur} type="cpassword" name="name" placeholder="Confirm Password" />
+              <Form.Control onBlur={handleBlur} type="cpassword" name="name" placeholder="Confirm Password" required/>
             </Form.Group>}
             {!newUser && <Form.Group controlId="formBasicCheckbox" className="d-flex ">
               <Form.Check type="checkbox" label="Remember Me" /> <p className="forgetPassword">Forget Password</p>
