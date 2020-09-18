@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import './HotelDetails.css'
 
 const HotelDetails = (props) => {
     const { img, name, detailsOne, detailsTwo, detailsThree, detailsFour } = props.hotel;
@@ -12,6 +13,13 @@ const HotelDetails = (props) => {
                     <Card.Text>{detailsOne}</Card.Text>
                     <Card.Text>{detailsTwo}</Card.Text>
                     <Card.Text>{detailsThree}</Card.Text>
+                    <div className="rating">
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star-half-alt"></i>
+                    </div>
                     <Card.Text>{detailsFour}</Card.Text>
                 </Card.Body>
             </Card>
