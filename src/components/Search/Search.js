@@ -6,10 +6,8 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import hotelData from '../../fakeData/hotels'
 import HotelDetails from '../HotelDetails/HotelDetails';
 
-
-
 const containerStyle = {
-    marginTop:'100px',
+    marginTop: '100px',
     width: '600px',
     height: '900px'
 };
@@ -45,19 +43,16 @@ const Search = () => {
     useEffect(() => {
         const hotelDetails = hotelData.filter(hotel => hotel.pid === Number(travelId))
         setHotelInfo(hotelDetails)
-    },[])
+    }, [])
 
     return (
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
                     <h1>STAYS IN {travelerDetails.name} </h1>
-                   
-
                     {
                         hotelInfo.map(hotel => <HotelDetails hotel={hotel} key={hotel.name}></HotelDetails>)
                     }
-
                 </div>
                 <div className="col-md-6">
                     <LoadScript
@@ -70,7 +65,6 @@ const Search = () => {
                             onLoad={onLoad}
                             onUnmount={onUnmount}
                         >
-                            
                             <></>
                         </GoogleMap>
                     </LoadScript>

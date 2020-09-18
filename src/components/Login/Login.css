@@ -7,11 +7,13 @@
 
 .forgetPassword{
     margin-left: 100px;
-    color:#F9A51A
+    color:#F9A51A;
+    cursor: pointer;
 }
 
 .commonColor{
-    color:#F9A51A
+    color:#F9A51A;
+    cursor: pointer;
 }
 
 .google-button {
