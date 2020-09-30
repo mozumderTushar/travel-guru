@@ -115,6 +115,8 @@ const Login = () => {
           newUserInfo.success = true;
           setUser(newUserInfo)
           updateProfile(user.name)
+          setLoggedInUser(newUserInfo)
+          history.replace(from);
         })
         .catch(error => {
           const newUserInfo = { ...user }
@@ -163,6 +165,7 @@ const Login = () => {
       <Card style={{ width: '25rem', margin: '0 auto', marginTop: '100px' }}>
         <Card.Body>
           {newUser ? <h3>Create an account</h3> : <h3>Login</h3>}
+
           <Form onSubmit={handleSubmit}>
             {newUser && <Form.Group controlId="formBasicText">
               <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="First Name" required/>
@@ -185,9 +188,10 @@ const Login = () => {
             </Form.Group>}
             {!newUser && <Form.Group controlId="formBasicCheckbox" className="d-flex ">
               <Form.Check type="checkbox" label="Remember Me" /> <p className="forgetPassword">Forget Password</p>
-
             </Form.Group>}
+            
             <input className="BtnDesign" type="submit" value={newUser ? 'Create an account' : 'Login'} />
+
             {newUser ? <p>Already have an account?<span className="commonColor" onClick={() => setNewUser(!newUser)}>Login</span></p> :
               <p>Don't have account?<span className="commonColor" onClick={() => setNewUser(!newUser)}>Create a account</span></p>}
           </Form>
