@@ -13,6 +13,7 @@ import TravelDetails from './components/TravelDetails/TravelDetails';
 import Login from './components/Login/Login';
 import Search from './components/Search/Search';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 export const UserContext = createContext();
 
